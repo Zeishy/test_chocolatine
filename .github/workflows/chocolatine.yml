@@ -2,9 +2,9 @@ name: Mirroring
 
 on: [push, pull]
 
-jobs:
-  check_repository_cleanliness:
-    runs-on: ubuntu-latest
+runs-on: ubuntu-latest
+  jobs:
+    check_repository_cleanliness:
       steps:
         - uses: actions/checkout@v3
       run: |
@@ -20,4 +20,4 @@ jobs:
       lines+=$(find . -d "tmp")
       if ($lines -ne 0)
         echo("Unwanted files detected: ")
-      exit 1
+        exit 1
