@@ -20,4 +20,5 @@ jobs:
         lines+=$(find . -lname "pain au chocolat")
         lines+=$(find . -type d -name "tmp")
         if ($lines -ne 0)
+          echo("Unwanted files detected: $lines")
           exit 1
