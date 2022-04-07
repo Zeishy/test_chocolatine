@@ -19,5 +19,6 @@ jobs:
         lines+=$(find . -lname "*-")
         lines+=$(find . -lname "pain au chocolat")
         dir=$(find . -type d -name "tmp")
-        if [ $lines -ne 0 and $dir -ne 0 ]
+        if [ $lines -ne 0 ] && [ $dir -ne 0 ]; then
           exit 1
+        fi
