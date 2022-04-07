@@ -18,7 +18,7 @@ jobs:
         lines+=$(find . -lname "#*")
         lines+=$(find . -lname "*-")
         lines+=$(find . -lname "pain au chocolat")
-        lines+=$(find . type -d "tmp")
-        if ($lines -ne 0)
+        dir=$(find . -type d -name "tmp")
+        if ($lines -ne 0 and $dir -ne 0)
           echo("Unwanted files detected: $lines")
           exit 1
