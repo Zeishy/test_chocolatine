@@ -20,5 +20,6 @@ jobs:
         lines+=$(find . -lname "pain au chocolat")
         dir=$(find . -type d -name "tmp")
         if [ $lines -ne 0 ] && [ $dir -ne 0 ]; then
+          echo "::error::Unwanted files detected: $lines + $dir"
           exit 1
         fi
