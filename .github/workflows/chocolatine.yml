@@ -2,22 +2,23 @@ name: Mirroring
 
 on: [push, pull]
 
-runs-on: ubuntu-latest
-  jobs:
-    check_repository_cleanliness:
-      steps:
-        - uses: actions/checkout@v3
+jobs:
+  check_repository_cleanliness:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: find
       run: |
-      lines=$(find . -lname "*.o")
-      lines+=$(find . -lname "*.a")
-      lines+=$(find . -lname "*.so")
-      lines+=$(find . -lname "*.gcno")
-      lines+=$(find . -lname "*.gcda")
-      lines+=$(find . -lname "*.gcovr")
-      lines+=$(find . -lname "#*")
-      lines+=$(find . -lname "*-")
-      lines+=$(find . -lname "pain au chocolat")
-      lines+=$(find . -d "tmp")
-      if ($lines -ne 0)
-        echo("Unwanted files detected: ")
-        exit 1
+        lines=$(find . -lname "*.o")
+        lines+=$(find . -lname "*.a")
+        lines+=$(find . -lname "*.so")
+        lines+=$(find . -lname "*.gcno")
+        lines+=$(find . -lname "*.gcda")
+        lines+=$(find . -lname "*.gcovr")
+        lines+=$(find . -lname "#*")
+        lines+=$(find . -lname "*-")
+        lines+=$(find . -lname "pain au chocolat")
+        lines+=$(find . -d "tmp")
+        if ($lines -ne 0)
+          echo("Unwanted files detected: ")
+          exit 1
