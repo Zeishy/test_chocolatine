@@ -28,7 +28,7 @@ jobs:
     steps:
     # - uses: actions/checkout@v3
     - name: make
-      run: make | timeout 2
+      run: make | timeout -k=2
     - name: clean
       run: make clean
   run_tests:
