@@ -32,4 +32,8 @@ jobs:
     - name: clean
       run: make clean
   run_tests:
-  push_to_mirror:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: run_test
+      run: make tests_run
